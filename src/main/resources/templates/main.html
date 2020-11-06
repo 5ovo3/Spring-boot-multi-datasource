@@ -1,10 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        table {
+            width: 50%;
+            border: 1px solid #444444;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-dfdfdfdd
+    <div><span>AISC-gates</span>
+        <table>
+            <thead>
+            <tr>
+                <th>gate_id</th>
+                <th>latitude</th>
+                <th>longitude</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="aisc : ${aiscList}">
+                <td th:text="${aisc.getGate_id()}"></td>
+                <td th:text="${aisc.getLatitude()}"></td>
+                <td th:text="${aisc.getLongitude()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div><span>shelter-member</span>
+        <table>
+            <thead>
+            <tr>
+                <th>id</th>
+                <th>username</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="member : ${memberList}">
+                <td th:text="${member.getId()}"></td>
+                <td th:text="${member.getUsername()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div><span>shelter-manage</span>
+        <table>
+            <thead>
+            <tr>
+                <th>map_id</th>
+                <th>provider_id</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="shelter : ${shelterList}">
+                <td th:text="${shelter.getMap_id()}"></td>
+                <td th:text="${shelter.getProvider_id()}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+
+</script>
 </html>

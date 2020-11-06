@@ -1,6 +1,5 @@
 package kr.engsoft.test3.aisc;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
@@ -10,9 +9,13 @@ import javax.persistence.Query;
 import java.util.List;
 
 @Repository
-@RequiredArgsConstructor
 public class AiscRepository {
     private final EntityManager em;
+
+    @Autowired
+    public AiscRepository(@Qualifier("AiscEntityManagerFactory") EntityManager manager) {
+        this.em = manager;
+    }
 
     public List<Aisc> selectGates() {
         String sql = "";

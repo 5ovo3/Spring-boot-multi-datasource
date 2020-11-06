@@ -47,7 +47,6 @@ public class AiscDataSource {
     }
 
     @Bean(name = "AiscEntityManagerFactory")
-    @Primary
     public LocalContainerEntityManagerFactoryBean AiscEntityManagerFactory() {
 
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -55,7 +54,6 @@ public class AiscDataSource {
         HashMap<String, Object> properties = new HashMap<>();
 
         properties.put(AvailableSettings.HBM2DDL_AUTO, env.getProperty("spring.jpa.hibernate.ddl-auto"));
-        System.out.println(env.getProperty("spring.jpa.hibernate.ddl-auto"));
         em.setDataSource(getAiscDataSource());
         em.setPersistenceUnitName("Aisc");
         em.setPackagesToScan("kr.engsoft.test3.aisc"); //엔티티 패키지

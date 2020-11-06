@@ -4,7 +4,9 @@ import com.zaxxer.hikari.HikariConfig;
 import com.zaxxer.hikari.HikariDataSource;
 import org.hibernate.cfg.AvailableSettings;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.*;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
@@ -47,7 +49,6 @@ public class ShelterDataSource {
     }
 
     @Bean(name = "ShelterEntityManagerFactory")
-    @Primary
     public LocalContainerEntityManagerFactoryBean ShelterEntityManagerFactory() {
 
         LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();
@@ -55,9 +56,9 @@ public class ShelterDataSource {
         HashMap<String, Object> properties = new HashMap<>();
 
         properties.put(AvailableSettings.HBM2DDL_AUTO, env.getProperty("spring.jpa.hibernate.ddl-auto"));
-        System.out.println(env.getProperty("spring.jpa.hibernate.ddl-auto"));
         em.setDataSource(getShelterDataSource());
         em.setPersistenceUnitName("Shelter");
+        em.setPersistenceUnitName("ShelterMember");
         em.setPackagesToScan("kr.engsoft.test3.shelter"); //엔티티 패키지
         em.setJpaVendorAdapter(vendorAdapter);
         em.setJpaPropertyMap(properties);

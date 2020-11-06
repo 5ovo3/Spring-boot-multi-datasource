@@ -12,8 +12,11 @@ public class ShelterService {
 
     private final ShelterRepository shelterRepository;
 
-    @Transactional
     public List<Shelter> selectManage() {
         return shelterRepository.selectManage();
+    }
+
+    public List<ShelterMember> selectMember() {
+        return shelterRepository.selectMember();
     }
 }

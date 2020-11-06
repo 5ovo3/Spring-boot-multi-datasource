@@ -20,5 +20,5 @@ public class Aisc {
     private String latitude;
 
     @Column(name = "longitude")
-    private String longitude6;
+    private String longitude;
 }
